@@ -257,7 +257,7 @@ class LazyPredictor:
         print(f"✅ Results saved to {path}")
 
 
-def test_lazy_classifier():
+def lazy_classifier():
     from sklearn.datasets import load_iris
 
     iris = load_iris()
@@ -269,7 +269,7 @@ def test_lazy_classifier():
     predictor_clf.run(X_clf, y_clf)
 
 
-def test_lazy_regressor():
+def lazy_regressor():
     from sklearn.datasets import load_diabetes
 
     diabetes = load_diabetes()
@@ -278,7 +278,6 @@ def test_lazy_regressor():
     predictor_reg = LazyPredictor()
     predictor_reg.run(X_reg, y_reg)
 
-
 if __name__ == '__main__':
-    test_lazy_classifier()
-    # test_lazy_regressor()
+    lazy_classifier()
+    # lazy_regressor()
