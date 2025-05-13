@@ -52,7 +52,6 @@ REGRESSORS = {
     'LGBMRegressor': LGBMRegressor(verbose=-1),
     'DummyRegressor': DummyRegressor(),
     # 'MLPRegressor': MLPRegressor(),
-
 }
 
 CLASSIFIER_METRICS = {
@@ -258,11 +257,9 @@ class LazyPredictor:
         print(f"✅ Results saved to {path}")
 
 
-if __name__ == '__main__':
-    from sklearn.datasets import load_diabetes, load_iris
-    from sklearn.model_selection import train_test_split
+def test_lazy_classifier():
+    from sklearn.datasets import load_iris
 
-    # 分类
     iris = load_iris()
     X_clf, y_clf, = iris.data, iris.target
     predictor_clf = LazyPredictor(is_regression=False,
@@ -271,9 +268,17 @@ if __name__ == '__main__':
                                   )
     predictor_clf.run(X_clf, y_clf)
 
-    # 回归
+
+def test_lazy_regressor():
+    from sklearn.datasets import load_diabetes
+
     diabetes = load_diabetes()
 
     X_reg, y_reg = diabetes.data, diabetes.target
     predictor_reg = LazyPredictor()
     predictor_reg.run(X_reg, y_reg)
+
+
+if __name__ == '__main__':
+    test_lazy_classifier()
+    # test_lazy_regressor()
